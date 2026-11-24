@@ -1,0 +1,103 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/universal_robots/protos/UR5e.proto"
+
+WorldInfo {
+  info [
+    "Brazo UR5e que riega dos conos de terracota alimentados desde un brik de 1 L."
+  ]
+  title "Brazo robótico de riego"
+  basicTimeStep 16
+}
+Viewpoint {
+  orientation -0.2 0.12 0.97 2.2
+  position 1.6 -1.5 1.3
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 3 3
+}
+DEF BRAZO UR5e {
+  translation 0 0 0
+  controller "brazo_riego"
+}
+Solid {
+  translation 0.6 0 0.1
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.42 0.27 0.15
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.3 0.8 0.2
+      }
+    }
+  ]
+  name "jardinera"
+  boundingObject Box {
+    size 0.3 0.8 0.2
+  }
+}
+Solid {
+  translation 0.6 0.2 0.24
+  rotation 1 0 0 3.14159
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.77 0.41 0.23
+        roughness 1
+        metalness 0
+      }
+      geometry Cone {
+        bottomRadius 0.04
+        height 0.12
+      }
+    }
+  ]
+  name "cono_1"
+}
+Solid {
+  translation 0.6 -0.2 0.24
+  rotation 1 0 0 3.14159
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.77 0.41 0.23
+        roughness 1
+        metalness 0
+      }
+      geometry Cone {
+        bottomRadius 0.04
+        height 0.12
+      }
+    }
+  ]
+  name "cono_2"
+}
+Solid {
+  translation -0.1 0.55 0.0975
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.95 0.95 0.97
+        roughness 0.6
+        metalness 0
+      }
+      geometry Box {
+        size 0.064 0.095 0.195
+      }
+    }
+  ]
+  name "brik_1L"
+  boundingObject Box {
+    size 0.064 0.095 0.195
+  }
+}
